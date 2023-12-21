@@ -2,13 +2,14 @@ import requests
 import urllib.parse
 from flask import Flask, redirect, request, jsonify, session
 from datetime import datetime, timedelta
+import config
 
 
 app = Flask(__name__)
-app.secret_key = 'Boba'
+app.secret_key = config.SECRET_KEY
 
-CLIENT_ID = 'd8869a3b24c8428f945c7c60d7f716f9'
-CLIENT_SECRET = 'c0b2c25bc9234b32a0c8e1ccc8d81606'
+CLIENT_ID = config.CLIENT_ID
+CLIENT_SECRET = config.CLIENT_SECRET
 REDIRECT_URI = 'http://localhost:5000/callback'
 
 AUTH_URL = 'https://accounts.spotify.com/authorize'
