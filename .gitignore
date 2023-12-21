@@ -13,7 +13,7 @@ venv
 /build
 
 # .gitignore
-config.py
+/api/config.py
 
 # misc
 .DS_Store
