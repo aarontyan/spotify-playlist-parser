@@ -11,6 +11,8 @@ venv
 
 # production
 /build
+
+# .gitignore
 config.py
 
 # misc
