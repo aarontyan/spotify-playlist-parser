@@ -11,6 +11,7 @@ venv
 
 # production
 /build
+api/config.py
 
 # misc
 .DS_Store
