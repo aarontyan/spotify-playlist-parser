@@ -1,34 +1,44 @@
-import logo from './logo.svg';
-import './App.css';
-import React, {useState, useEffect} from 'react';
+import React, { useState, useEffect } from 'react'
+import 'bootstrap/dist/css/bootstrap.min.css';
+import { Container, Row, Card} from 'react-bootstrap';
 
 function App() {
-  const [currentTime, setCurrentTime] = useState(0)
+
+  const [playlists, setPlaylists] = useState([]);
 
   useEffect(() => {
-    fetch('/time').then(res => res.json()).then(data => {
-      setCurrentTime(data.time);
-    });
+    fetch("/playlists").then(
+      res => res.json()
+    ).then(
+      playlists => {
+        setPlaylists(playlists.items);
+      }
+    )
   }, []);
+
+
+  console.log(playlists)
+
   return (
+
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-        <p>The current time is {currentTime}.</p>
-      </header>
+      <Container>
+        <Row className="mx-2 row row-cols-4">
+          {playlists.map( (playlist, i)  => {
+            console.log(playlist);
+            return (
+              <Card>
+                <Card.Img src={playlist.images[0].url} />
+                <Card.Body>
+                  <Card.Title>{playlist.name}</Card.Title>
+                </Card.Body>
+              </Card>
+            )
+          })}
+        </Row>
+      </Container>
     </div>
   );
 }
 
-export default App;
+export default App
